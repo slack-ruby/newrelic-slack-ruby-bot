@@ -1,11 +1,11 @@
-NewRelic::Agent::Instrumentation::SlackRubyBot
-==============================================
+NewRelic Instrumentation for SlackRubyBot
+=========================================
 
 [![Gem Version](http://img.shields.io/gem/v/newrelic-slack-ruby-bot.svg)](http://badge.fury.io/rb/newrelic-slack-ruby-bot)
 [![Build Status](http://img.shields.io/travis/dblock/newrelic-slack-ruby-bot.svg)](https://travis-ci.org/dblock/newrelic-slack-ruby-bot)
 [![Code Climate](https://codeclimate.com/github/dblock/newrelic-slack-ruby-bot.svg)](https://codeclimate.com/github/dblock/newrelic-slack-ruby-bot)
 
-NewRelic instrumentation for [slack-ruby-bot](github.com/dblock/slack-ruby-bot).
+NewRelic instrumentation for [slack-ruby-bot](https://github.com/dblock/slack-ruby-bot).
 
 ## Install
 
