@@ -7,6 +7,8 @@ NewRelic Instrumentation for SlackRubyBot
 
 NewRelic instrumentation for [slack-ruby-bot](https://github.com/dblock/slack-ruby-bot).
 
+![](screenshots/breakdown.png)
+
 ## Install
 
 Add to Gemfile.
