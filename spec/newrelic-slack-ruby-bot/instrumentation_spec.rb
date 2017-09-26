@@ -1,16 +1,15 @@
 require 'spec_helper'
 
 describe NewRelic::Agent::Instrumentation do
+  subject { SlackRubyBot::Hooks::Message.new }
   let(:client) { SlackRubyBot::Client.new }
-  subject do
-    SlackRubyBot::Server.new
-  end
+
   it 'perform_action_with_newrelic_trace' do
     expect(subject)
       .to receive(:perform_action_with_newrelic_trace)
-      .with(hash_including(name: 'message'))
+      .with(hash_including(name: 'call', category: 'OtherTransaction/Slack'))
       .and_yield
 
-    subject.message(client, Hashie::Mash.new(message: 'message', text: 'hi'))
+    subject.call(client, Hashie::Mash.new(message: 'message', text: 'hi'))
   end
 end

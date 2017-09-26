@@ -15,17 +15,17 @@ DependencyDetection.defer do
   end
 
   def instrument_call
-    ::SlackRubyBot::Server.class_eval do
+    ::SlackRubyBot::Hooks::Message.class_eval do
       include ::NewRelic::Agent::Instrumentation::ControllerInstrumentation
 
       def message_with_new_relic(client, data)
-        perform_action_with_newrelic_trace(name: 'message', category: 'OtherTransaction/Slack') do
+        perform_action_with_newrelic_trace(name: 'call', category: 'OtherTransaction/Slack') do
           message_without_new_relic(client, data)
         end
       end
 
-      alias_method :message_without_new_relic, :message
-      alias_method :message, :message_with_new_relic
+      alias_method :message_without_new_relic, :call
+      alias_method :call, :message_with_new_relic
     end
   end
 end
