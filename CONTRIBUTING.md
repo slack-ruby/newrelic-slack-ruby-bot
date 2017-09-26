@@ -1,19 +1,19 @@
 # Contributing to Ruby-Enum
 
-This project is work of [many contributors](https://github.com/dblock/newrelic-slack-ruby-bot/graphs/contributors).
+This project is work of [many contributors](https://github.com/slack-ruby/newrelic-slack-ruby-bot/graphs/contributors).
 
-You're encouraged to submit [pull requests](https://github.com/dblock/newrelic-slack-ruby-bot/pulls), [propose features and discuss issues](https://github.com/dblock/newrelic-slack-ruby-bot/issues).
+You're encouraged to submit [pull requests](https://github.com/slack-ruby/newrelic-slack-ruby-bot/pulls), [propose features and discuss issues](https://github.com/slack-ruby/newrelic-slack-ruby-bot/issues).
 
 In the examples below, substitute your Github username for `contributor` in URLs.
 
 ### Fork the Project
 
-Fork the [project on Github](https://github.com/dblock/newrelic-slack-ruby-bot) and check out your copy.
+Fork the [project on Github](https://github.com/slack-ruby/newrelic-slack-ruby-bot) and check out your copy.
 
 ```
 git clone https://github.com/contributor/newrelic-slack-ruby-bot.git
 cd newrelic-slack-ruby-bot
-git remote add upstream https://github.com/dblock/newrelic-slack-ruby-bot.git
+git remote add upstream https://github.com/slack-ruby/newrelic-slack-ruby-bot.git
 ```
 
 ### Bundle Install and Test
@@ -92,7 +92,7 @@ Go to https://github.com/contributor/newrelic-slack-ruby-bot and select your fea
 Update the [CHANGELOG](CHANGELOG.md) with the pull request number. A typical entry looks as follows.
 
 ```
-* [#123](https://github.com/dblock/newrelic-slack-ruby-bot/pull/123): Reticulated splines - [@contributor](https://github.com/contributor).
+* [#123](https://github.com/slack-ruby/newrelic-slack-ruby-bot/pull/123): Reticulated splines - [@contributor](https://github.com/contributor).
 ```
 
 Amend your previous commit and force push the changes.

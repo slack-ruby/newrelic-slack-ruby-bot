@@ -10,9 +10,9 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = '>= 1.3.6'
   s.files = Dir['**/*']
   s.require_paths = ['lib']
-  s.homepage = 'http://github.com/dblock/newrelic-slack-ruby-bot'
+  s.homepage = 'http://github.com/slack-ruby/newrelic-slack-ruby-bot'
   s.licenses = ['MIT']
   s.summary = 'NewRelic instrumentation for slack-ruby-bot.'
   s.add_dependency 'newrelic_rpm'
-  s.add_dependency 'slack-ruby-bot'
+  s.add_dependency 'slack-ruby-bot', '<= 0.7.0'
 end

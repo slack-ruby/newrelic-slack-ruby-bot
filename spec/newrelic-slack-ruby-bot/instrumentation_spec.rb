@@ -11,6 +11,6 @@ describe NewRelic::Agent::Instrumentation do
       .with(hash_including(name: 'message'))
       .and_yield
 
-    subject.message(client, message: 'message', text: 'hi')
+    subject.message(client, Hashie::Mash.new(message: 'message', text: 'hi'))
   end
 end
