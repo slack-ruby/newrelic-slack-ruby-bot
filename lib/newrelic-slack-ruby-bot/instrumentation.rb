@@ -1,5 +1,5 @@
 DependencyDetection.defer do
-  named :slack_ruby_bot_instrumentation
+  named :slack_ruby_bot
 
   depends_on do
     !::NewRelic::Agent.config[:disable_slack_ruby_bot]
@@ -10,7 +10,7 @@ DependencyDetection.defer do
   end
 
   executes do
-    NewRelic::Agent.logger.info 'Installing New Relic supported SlackRubyBot instrumentation'
+    NewRelic::Agent.logger.info 'Installing SlackRubyBot instrumentation'
     instrument_call
   end
 
