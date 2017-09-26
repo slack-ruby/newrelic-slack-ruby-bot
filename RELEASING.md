@@ -1,6 +1,6 @@
-# Releasing Ruby-Enum
+# Releasing Newrelic-Slack-Ruby-Bot
 
-There're no hard rules about when to release newrelic-slack-ruby-bot. Release bug fixes frequenty, features not so frequently and breaking API changes rarely.
+There're no hard rules about when to release newrelic-slack-ruby-bot. Release bug fixes frequently, features not so frequently and breaking API changes rarely.
 
 ### Release
 
@@ -58,7 +58,7 @@ Next Release
 
 Increment the third version number in [lib/newrelic-slack-ruby-bot/version.rb](lib/newrelic-slack-ruby-bot/version.rb).
 
-Comit your changes.
+Commit your changes.
 
 ```
 git add CHANGELOG.md lib/newrelic-slack-ruby-bot/version.rb
