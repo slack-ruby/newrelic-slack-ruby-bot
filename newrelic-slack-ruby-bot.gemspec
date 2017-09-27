@@ -14,5 +14,5 @@ Gem::Specification.new do |s|
   s.licenses = ['MIT']
   s.summary = 'NewRelic instrumentation for slack-ruby-bot.'
   s.add_dependency 'newrelic_rpm'
-  s.add_dependency 'slack-ruby-bot', '<= 0.7.0'
+  s.add_dependency 'slack-ruby-bot', '>= 0.8.0'
 end
