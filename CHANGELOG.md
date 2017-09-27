@@ -1,8 +1,7 @@
-### 0.2.0 (Next)
+### 0.2.0 (9/26/2017)
 
 * [#4](https://github.com/slack-ruby/newrelic-slack-ruby-bot/pull/4): Revise New Relic log messages - [@kstole](https://github.com/kstole).
 * [#5](https://github.com/slack-ruby/newrelic-slack-ruby-bot/pull/5): Support latest version of SlackRubyBot by applying instrumentation to message hook - [@kstole](https://github.com/kstole).
-* Your contribution here.
 
 ### 0.1.1 (9/26/2017)
 
