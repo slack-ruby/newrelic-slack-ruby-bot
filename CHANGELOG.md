@@ -1,3 +1,7 @@
+### 0.2.1 (Next)
+
+* Your contribution here.
+
 ### 0.2.0 (9/26/2017)
 
 * [#4](https://github.com/slack-ruby/newrelic-slack-ruby-bot/pull/4): Revise New Relic log messages - [@kstole](https://github.com/kstole).
