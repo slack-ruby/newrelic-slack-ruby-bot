@@ -1,5 +1,6 @@
 ### 0.2.1 (Next)
 
+* [#6](https://github.com/slack-ruby/newrelic-slack-ruby-bot/pull/6): Add team, channel, and user attributes to New Relic traces - [@kstole](https://github.com/kstole).
 * Your contribution here.
 
 ### 0.2.0 (9/26/2017)
