@@ -11,15 +11,17 @@ DependencyDetection.defer do
 
   executes do
     NewRelic::Agent.logger.info 'Installing SlackRubyBot instrumentation'
-    instrument_call
   end
 
-  def instrument_call
+  executes do
     ::SlackRubyBot::Hooks::Message.class_eval do
       include ::NewRelic::Agent::Instrumentation::ControllerInstrumentation
 
       def message_with_new_relic(client, data)
         perform_action_with_newrelic_trace(name: 'call', category: 'OtherTransaction/Slack') do
+          ::NewRelic::Agent.add_custom_attributes(team: data.team,
+                                                  channel: data.channel,
+                                                  user: data.user)
           message_without_new_relic(client, data)
         end
       end

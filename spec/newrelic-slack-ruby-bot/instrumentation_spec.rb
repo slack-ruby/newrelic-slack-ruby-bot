@@ -10,6 +10,22 @@ describe NewRelic::Agent::Instrumentation do
       .with(hash_including(name: 'call', category: 'OtherTransaction/Slack'))
       .and_yield
 
-    subject.call(client, Hashie::Mash.new(message: 'message', text: 'hi'))
+    subject.call(client, Slack::Messages::Message.new(message: 'message',
+                                                      text: 'hi',
+                                                      team: 'TEAM',
+                                                      channel: 'CHANNEL',
+                                                      user: 'USER'))
+  end
+
+  it 'adds team, channel, and user attributes' do
+    expect(::NewRelic::Agent)
+      .to receive(:add_custom_attributes)
+      .with(hash_including(team: 'TEAM', channel: 'CHANNEL', user: 'USER'))
+
+    subject.call(client, Slack::Messages::Message.new(message: 'message',
+                                                      text: 'hi',
+                                                      team: 'TEAM',
+                                                      channel: 'CHANNEL',
+                                                      user: 'USER'))
   end
 end

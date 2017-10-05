@@ -1,5 +1,10 @@
 AllCops:
   Exclude:
     - vendor/**/*
+Metrics/LineLength:
+  Max: 100
+Style/FileName:
+  Exclude:
+    - 'lib/newrelic-slack-ruby-bot.rb'
 
 inherit_from: .rubocop_todo.yml
