@@ -30,4 +30,38 @@ DependencyDetection.defer do
       alias_method :call, :message_with_new_relic
     end
   end
+
+  executes do
+    ObjectSpace.each_object(::SlackRubyBot::Commands::Base.singleton_class) do |command_class|
+      command_class.class_eval do
+        class << self
+          def command_name(match)
+            if match.is_a? MatchData
+              if match.names.include? 'command'
+                match[:command].downcase
+              elsif match.names.include? 'operator'
+                match[:operator].downcase
+              else
+                'match'
+              end
+            else
+              'scan'
+            end
+          end
+
+          def call_command_with_new_relic(client, data, match, block)
+            ::NewRelic::Agent.set_transaction_name("#{self}/#{command_name(match)}")
+            if match.is_a? MatchData
+              ::NewRelic::Agent
+                .add_custom_attributes(Hash[match.names.map(&:to_sym).zip(match.captures)])
+            end
+            call_command_without_new_relic(client, data, match, block)
+          end
+
+          alias_method :call_command_without_new_relic, :call_command
+          alias_method :call_command, :call_command_with_new_relic
+        end
+      end
+    end
+  end
 end
