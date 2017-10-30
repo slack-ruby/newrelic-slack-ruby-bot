@@ -32,35 +32,33 @@ DependencyDetection.defer do
   end
 
   executes do
-    ObjectSpace.each_object(::SlackRubyBot::Commands::Base.singleton_class) do |command_class|
-      command_class.class_eval do
-        class << self
-          def command_name(match)
-            if match.is_a? MatchData
-              if match.names.include? 'command'
-                match[:command].downcase
-              elsif match.names.include? 'operator'
-                match[:operator].downcase
-              else
-                'match'
-              end
+    ::SlackRubyBot::Commands::Base.class_eval do
+      class << self
+        def command_name(match)
+          if match.is_a? MatchData
+            if match.names.include? 'command'
+              match[:command].downcase
+            elsif match.names.include? 'operator'
+              match[:operator].downcase
             else
-              'scan'
+              'match'
             end
+          else
+            'scan'
           end
-
-          def call_command_with_new_relic(client, data, match, block)
-            ::NewRelic::Agent.set_transaction_name("#{self}/#{command_name(match)}")
-            if match.is_a? MatchData
-              ::NewRelic::Agent
-                .add_custom_attributes(Hash[match.names.map(&:to_sym).zip(match.captures)])
-            end
-            call_command_without_new_relic(client, data, match, block)
-          end
-
-          alias_method :call_command_without_new_relic, :call_command
-          alias_method :call_command, :call_command_with_new_relic
         end
+
+        def call_command_with_new_relic(client, data, match, block)
+          ::NewRelic::Agent.set_transaction_name("#{self}/#{command_name(match)}")
+          if match.is_a? MatchData
+            ::NewRelic::Agent
+              .add_custom_attributes(Hash[match.names.map(&:to_sym).zip(match.captures)])
+          end
+          call_command_without_new_relic(client, data, match, block)
+        end
+
+        alias_method :call_command_without_new_relic, :call_command
+        alias_method :call_command, :call_command_with_new_relic
       end
     end
   end

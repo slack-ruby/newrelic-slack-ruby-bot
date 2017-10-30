@@ -2,6 +2,7 @@
 
 * [#6](https://github.com/slack-ruby/newrelic-slack-ruby-bot/pull/6): Add team, channel, and user attributes to New Relic traces - [@kstole](https://github.com/kstole).
 * [#8](https://github.com/slack-ruby/newrelic-slack-ruby-bot/pull/8): Name New Relic transactions according to command called - [@kstole](https://github.com/kstole).
+* [#10](https://github.com/slack-ruby/newrelic-slack-ruby-bot/pull/10): Fix occasional infinite loop caused by Instrumentation - [@kstole](https://github.com/kstole).
 * Your contribution here.
 
 ### 0.2.0 (9/26/2017)
