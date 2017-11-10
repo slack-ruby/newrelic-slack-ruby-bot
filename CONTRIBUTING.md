@@ -1,4 +1,4 @@
-# Contributing to Ruby-Enum
+# Contributing to SlackRubyBot NewRelic Instrumentation
 
 This project is work of [many contributors](https://github.com/slack-ruby/newrelic-slack-ruby-bot/graphs/contributors).
 
