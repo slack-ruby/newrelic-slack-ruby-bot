@@ -44,6 +44,10 @@ You can add additional custom attributes via the New Relic agent.
 ::NewRelic::Agent.add_custom_attributes(key: value)
 ```
 
+### I only see Web transactions! Where are my Slack transactions?
+
+![NewRelic Transactions menu](screenshots/slack_transactions.gif)
+
 ## Contributing
 
 You're encouraged to contribute to this gem. See [CONTRIBUTING](CONTRIBUTING.md) for details.
