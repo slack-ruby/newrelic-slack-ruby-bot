@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe NewRelic::Agent::Instrumentation do
@@ -11,11 +13,16 @@ describe NewRelic::Agent::Instrumentation do
       .with(hash_including(name: 'call', category: 'OtherTransaction/Slack'))
       .and_yield
 
-    subject.call(client, Slack::Messages::Message.new(message: 'message',
-                                                      text: 'hi',
-                                                      team: 'TEAM',
-                                                      channel: 'CHANNEL',
-                                                      user: 'USER'))
+    subject.call(
+      client,
+      Slack::Messages::Message.new(
+        message: 'message',
+        text: 'hi',
+        team: 'TEAM',
+        channel: 'CHANNEL',
+        user: 'USER'
+      )
+    )
   end
 
   context 'operator' do
@@ -32,20 +39,30 @@ describe NewRelic::Agent::Instrumentation do
         .to receive(:add_custom_attributes)
         .with(hash_including(operator: '+', expression: '42'))
 
-      subject.call(client, Slack::Messages::Message.new(message: 'message',
-                                                        text: '+42',
-                                                        team: 'TEAM',
-                                                        channel: 'CHANNEL',
-                                                        user: 'USER'))
+      subject.call(
+        client,
+        Slack::Messages::Message.new(
+          message: 'message',
+          text: '+42',
+          team: 'TEAM',
+          channel: 'CHANNEL',
+          user: 'USER'
+        )
+      )
     end
     it 'sets transaction name' do
       expect(::NewRelic::Agent).to receive(:set_transaction_name).with('MyOperatorClass/+')
 
-      subject.call(client, Slack::Messages::Message.new(message: 'message',
-                                                        text: '+42',
-                                                        team: 'TEAM',
-                                                        channel: 'CHANNEL',
-                                                        user: 'USER'))
+      subject.call(
+        client,
+        Slack::Messages::Message.new(
+          message: 'message',
+          text: '+42',
+          team: 'TEAM',
+          channel: 'CHANNEL',
+          user: 'USER'
+        )
+      )
     end
   end
 
@@ -63,20 +80,30 @@ describe NewRelic::Agent::Instrumentation do
         .to receive(:add_custom_attributes)
         .with(hash_including(bot: 'mybot', command: 'this', expression: 'is the command'))
 
-      subject.call(client, Slack::Messages::Message.new(message: 'message',
-                                                        text: "#{client.name} this is the command",
-                                                        team: 'TEAM',
-                                                        channel: 'CHANNEL',
-                                                        user: 'USER'))
+      subject.call(
+        client,
+        Slack::Messages::Message.new(
+          message: 'message',
+          text: "#{client.name} this is the command",
+          team: 'TEAM',
+          channel: 'CHANNEL',
+          user: 'USER'
+        )
+      )
     end
     it 'sets transaction name' do
       expect(::NewRelic::Agent).to receive(:set_transaction_name).with('MyCommandClass/this')
 
-      subject.call(client, Slack::Messages::Message.new(message: 'message',
-                                                        text: "#{client.name} this is the command",
-                                                        team: 'TEAM',
-                                                        channel: 'CHANNEL',
-                                                        user: 'USER'))
+      subject.call(
+        client,
+        Slack::Messages::Message.new(
+          message: 'message',
+          text: "#{client.name} this is the command",
+          team: 'TEAM',
+          channel: 'CHANNEL',
+          user: 'USER'
+        )
+      )
     end
   end
 
@@ -92,20 +119,24 @@ describe NewRelic::Agent::Instrumentation do
         .with(hash_including(team: 'TEAM', channel: 'CHANNEL', user: 'USER'))
       expect(::NewRelic::Agent).to receive(:add_custom_attributes).with({})
 
-      subject.call(client, Slack::Messages::Message.new(message: 'message',
-                                                        text: 'read this',
-                                                        team: 'TEAM',
-                                                        channel: 'CHANNEL',
-                                                        user: 'USER'))
+      subject.call(client, Slack::Messages::Message.new(
+                             message: 'message',
+                             text: 'read this',
+                             team: 'TEAM',
+                             channel: 'CHANNEL',
+                             user: 'USER'
+                           ))
     end
     it 'sets transaction name' do
       expect(::NewRelic::Agent).to receive(:set_transaction_name).with('MyMatchClass/match')
 
-      subject.call(client, Slack::Messages::Message.new(message: 'message',
-                                                        text: 'read this',
-                                                        team: 'TEAM',
-                                                        channel: 'CHANNEL',
-                                                        user: 'USER'))
+      subject.call(client, Slack::Messages::Message.new(
+                             message: 'message',
+                             text: 'read this',
+                             team: 'TEAM',
+                             channel: 'CHANNEL',
+                             user: 'USER'
+                           ))
     end
   end
 
@@ -121,20 +152,24 @@ describe NewRelic::Agent::Instrumentation do
         .with(hash_including(team: 'TEAM', channel: 'CHANNEL', user: 'USER'))
       expect(::NewRelic::Agent).not_to receive(:add_custom_attributes)
 
-      subject.call(client, Slack::Messages::Message.new(message: 'message',
-                                                        text: 'I scanned this',
-                                                        team: 'TEAM',
-                                                        channel: 'CHANNEL',
-                                                        user: 'USER'))
+      subject.call(client, Slack::Messages::Message.new(
+                             message: 'message',
+                             text: 'I scanned this',
+                             team: 'TEAM',
+                             channel: 'CHANNEL',
+                             user: 'USER'
+                           ))
     end
     it 'sets transaction name' do
       expect(::NewRelic::Agent).to receive(:set_transaction_name).with('MyScanClass/scan')
 
-      subject.call(client, Slack::Messages::Message.new(message: 'message',
-                                                        text: 'I scanned this',
-                                                        team: 'TEAM',
-                                                        channel: 'CHANNEL',
-                                                        user: 'USER'))
+      subject.call(client, Slack::Messages::Message.new(
+                             message: 'message',
+                             text: 'I scanned this',
+                             team: 'TEAM',
+                             channel: 'CHANNEL',
+                             user: 'USER'
+                           ))
     end
   end
 end
