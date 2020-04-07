@@ -1,9 +1,9 @@
 NewRelic Instrumentation for SlackRubyBot
 =========================================
 
-[![Gem Version](http://img.shields.io/gem/v/newrelic-slack-ruby-bot.svg)](http://badge.fury.io/rb/newrelic-slack-ruby-bot)
-[![Build Status](http://img.shields.io/travis/slack-ruby/newrelic-slack-ruby-bot.svg)](https://travis-ci.org/slack-ruby/newrelic-slack-ruby-bot)
-[![Code Climate](https://codeclimate.com/github/dblock/newrelic-slack-ruby-bot.svg)](https://codeclimate.com/github/dblock/newrelic-slack-ruby-bot)
+[![Gem Version](https://badge.fury.io/rb/newrelic-slack-ruby-bot.svg)](https://badge.fury.io/rb/newrelic-slack-ruby-bot)
+[![Build Status](https://travis-ci.org/slack-ruby/newrelic-slack-ruby-bot.svg?branch=master)](https://travis-ci.org/slack-ruby/newrelic-slack-ruby-bot)
+[![Code Climate](https://codeclimate.com/github/slack-ruby/newrelic-slack-ruby-bot.svg)](https://codeclimate.com/github/slack-ruby/newrelic-slack-ruby-bot)
 
 NewRelic instrumentation for [slack-ruby-bot](https://github.com/slack-ruby/slack-ruby-bot).
 

@@ -1,10 +1,31 @@
 AllCops:
   Exclude:
     - vendor/**/*
-Metrics/LineLength:
-  Max: 100
-Style/FileName:
+
+Layout/LineLength:
+  Enabled: false
+  Max: 256
+
+Metrics/BlockLength:
+  Enabled: false
+
+Naming/FileName:
   Exclude:
     - 'lib/newrelic-slack-ruby-bot.rb'
+
+Lint/RaiseException:
+  Enabled: true
+
+Lint/StructNewOverride:
+  Enabled: true
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
 
 inherit_from: .rubocop_todo.yml

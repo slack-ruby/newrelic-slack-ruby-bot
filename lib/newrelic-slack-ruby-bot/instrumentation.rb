@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 DependencyDetection.defer do
   named :slack_ruby_bot
 
@@ -19,9 +21,11 @@ DependencyDetection.defer do
 
       def message_with_new_relic(client, data)
         perform_action_with_newrelic_trace(name: 'call', category: 'OtherTransaction/Slack') do
-          ::NewRelic::Agent.add_custom_attributes(team: data.team,
-                                                  channel: data.channel,
-                                                  user: data.user)
+          ::NewRelic::Agent.add_custom_attributes(
+            team: data.team,
+            channel: data.channel,
+            user: data.user
+          )
           message_without_new_relic(client, data)
         end
       end
@@ -35,7 +39,7 @@ DependencyDetection.defer do
     ::SlackRubyBot::Commands::Base.class_eval do
       class << self
         def command_name(match)
-          if match.is_a? MatchData
+          if match.respond_to?(:names) && match.respond_to?(:[])
             if match.names.include? 'command'
               match[:command].downcase
             elsif match.names.include? 'operator'
@@ -50,9 +54,11 @@ DependencyDetection.defer do
 
         def call_command_with_new_relic(client, data, match, block)
           ::NewRelic::Agent.set_transaction_name("#{self}/#{command_name(match)}")
-          if match.is_a? MatchData
+          if match.respond_to?(:names) && match.respond_to?(:captures)
             ::NewRelic::Agent
-              .add_custom_attributes(Hash[match.names.map(&:to_sym).zip(match.captures)])
+              .add_custom_attributes(
+                Hash[match.names.map(&:to_sym).zip(match.captures)]
+              )
           end
           call_command_without_new_relic(client, data, match, block)
         end
