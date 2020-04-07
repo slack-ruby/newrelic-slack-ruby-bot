@@ -5,7 +5,7 @@ module NewRelic
     module Instrumentation
       # New Relic instrumentation for SlackRubyBot
       module SlackRubyBot
-        VERSION = '0.2.2'
+        VERSION = '0.2.3'
       end
     end
   end

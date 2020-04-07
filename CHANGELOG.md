@@ -1,3 +1,7 @@
+### 0.2.3 (Next)
+
+* Your contribution here.
+
 ### 0.2.2 (4/7/2020)
 
 * [#12](https://github.com/slack-ruby/newrelic-slack-ruby-bot/pull/12): Add support for slack-ruby-bot 0.14.0 - [@dblock](https://github.com/dblock).
